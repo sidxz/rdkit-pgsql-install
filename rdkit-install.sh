@@ -12,7 +12,8 @@ BOOST_VER=1.81
 JAVA_VERSION=17
 
 # Update package list and install dependencies
-sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends \
   build-essential \
   python3-dev \
   python3-numpy \
@@ -52,10 +53,12 @@ git clone -b $GIT_BRANCH --single-branch $GIT_REPO
 
 if [ -n "$GIT_TAG" ]; then 
   cd rdkit && git fetch --tags && git checkout $GIT_TAG
+else
+  cd rdkit
 fi
 
 # Environment variables
-export RDBASE=$(pwd)/rdkit
+export RDBASE=$(pwd)
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RDBASE/lib:$RDBASE/Code/JavaWrappers/gmwrapper:/usr/lib/x86_64-linux-gnu:/usr/lib/aarch64-linux-gnu/
 export PYTHONPATH=$PYTHONPATH:$RDBASE
 
@@ -101,3 +104,7 @@ cd $RDBASE/Code/JavaWrappers/gmwrapper && tar cvfz javadoc.tgz doc
 cd $RDBASE
 
 echo "RDKit installation and setup completed successfully."
+
+# Additional steps to setup PostgreSQL and enable RDKit
+sudo -u postgres psql -c "CREATE EXTENSION rdkit;"
+echo "RDKit extension enabled in PostgreSQL."
