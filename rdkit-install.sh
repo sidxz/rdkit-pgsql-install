@@ -7,8 +7,7 @@ echo "Maintainer: sid@tamu.edu"
 GIT_REPO=https://github.com/rdkit/rdkit.git
 GIT_BRANCH=master
 GIT_TAG=
-POSTGRES_VERSION=15
-BOOST_VER=1.81
+POSTGRES_VERSION=16
 JAVA_VERSION=17
 
 # Update package list and install dependencies
@@ -21,26 +20,19 @@ sudo apt-get install -y --no-install-recommends \
   cmake \
   sqlite3 \
   libsqlite3-dev \
-  libboost${BOOST_VER} \
-  libboost${BOOST_VER}-dev \
-  libboost-system${BOOST_VER} \
-  libboost-thread${BOOST_VER} \
-  libboost-serialization${BOOST_VER} \
-  libboost-python${BOOST_VER} \
-  libboost-regex${BOOST_VER} \
-  libboost-iostreams${BOOST_VER} \
+  libboost-all-dev \
   zlib1g-dev \
   swig \
   libeigen3-dev \
   git \
   wget \
   openjdk-${JAVA_VERSION}-jdk \
-  postgresql-${POSTGRES_VERSION} \
-  postgresql-server-dev-${POSTGRES_VERSION} \
-  postgresql-plpython3-${POSTGRES_VERSION} \
   zip \
   unzip \
-  libfreetype6-dev
+  libfreetype6-dev \
+  postgresql \
+  postgresql-contrib \
+  postgresql-plpython3
 
 # Clone the RDKit repository
 if [ -n "$GIT_TAG" ]; then 
