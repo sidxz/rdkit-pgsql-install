@@ -1,1 +1,0 @@
-apt install postgresql postgresql-contrib postgresql-plpython3 -y

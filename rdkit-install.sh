@@ -18,6 +18,7 @@ sudo apt-get install -y --no-install-recommends \
   python3-numpy \
   python3-pip \
   cmake \
+  catch2 \
   sqlite3 \
   libsqlite3-dev \
   libboost-all-dev \
@@ -32,7 +33,8 @@ sudo apt-get install -y --no-install-recommends \
   libfreetype6-dev \
   postgresql \
   postgresql-contrib \
-  postgresql-plpython3
+  postgresql-plpython3 \
+  libpq-dev
 
 # Clone the RDKit repository
 if [ -n "$GIT_TAG" ]; then 
