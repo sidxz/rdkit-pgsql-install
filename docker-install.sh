@@ -3,14 +3,18 @@
 # Function to display a progress bar
 show_progress() {
     local duration=$1
-    local interval=0.1
-    local steps=$((duration / interval))
-    echo -n "["
+    local steps=50
+    local step_duration=$((duration * 1000 / steps))
+    local filled_bar=""
+    local empty_bar=$(printf '%0.1s' "."{1..50})
+    
     for ((i=0; i<steps; i++)); do
-        sleep $interval
-        echo -n "="
+        sleep $((step_duration / 1000)).$((step_duration % 1000))
+        filled_bar="${filled_bar}="
+        empty_bar="${empty_bar#.}"
+        printf "\r[%-50s]" "${filled_bar}${empty_bar}"
     done
-    echo "]"
+    echo ""
 }
 
 echo "Starting Docker installation script..."
