@@ -16,6 +16,7 @@ MOUNT_POINT="/data"
 # Create the mount point
 echo "Creating mount point $MOUNT_POINT..."
 sudo mkdir -p $MOUNT_POINT
+sudo mkdir -p $MOUNT_POINT/moldb
 
 # Mount the disk
 echo "Mounting disk with UUID=$UUID to $MOUNT_POINT..."

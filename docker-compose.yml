@@ -1,0 +1,12 @@
+services:
+  MolDb_Postgres:
+    container_name: "molddb-postgres"
+    image: informaticsmatters/rdkit-cartridge-debian
+    environment:
+      POSTGRES_DB: chemdb
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - /data/moldb:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
