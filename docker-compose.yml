@@ -19,6 +19,6 @@ services:
       POSTGRES_PASSWORD: ${CHEMVAULT_POSTGRES_PASSWORD}
       POSTGRES_DB: ${CHEMVAULT_POSTGRES_DB}
     volumes:
-      - /data/chemvault_db::/var/lib/postgresql/data
+      - /data/chemvault_db:/var/lib/postgresql/data
     ports:
       - "54320:5432"
