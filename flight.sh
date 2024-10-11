@@ -24,11 +24,23 @@ if [ -z "$POSTGRES_USER" ] || [ -z "$POSTGRES_PASSWORD" ]; then
   exit 1
 fi
 
+if [ -z "$CHEMVAULT_POSTGRES_USER" ] || [ -z "$CHEMVAULT_POSTGRES_PASSWORD" ] || [ -z "$CHEMVAULT_POSTGRES_DB" ]; then
+  echo "CHEMVAULT_POSTGRES_USER and CHEMVAULT_POSTGRES_PASSWORD and CHEMVAULT_POSTGRES_DB must be set in the .env file!"
+  exit 1
+fi
+
 # Check if /data directory exists
 if [ ! -d /data/moldb ]; then
   echo "/data/moldb directory does not exist!"
   exit 1
 fi
+
+# Check if /data directory exists
+if [ ! -d /data/chemvault_db ]; then
+  echo "/data/chemvault_db directory does not exist!"
+  exit 1
+fi
+
 
 # Check if docker-compose.yml file exists
 if [ ! -f docker-compose.yml ]; then

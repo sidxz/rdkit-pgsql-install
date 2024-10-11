@@ -10,3 +10,15 @@ services:
       - /data/moldb:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+  daikon_chem_vault_db:
+    image: informaticsmatters/rdkit-cartridge-debian:Release_2024_03_3
+    restart: always
+    environment:
+      POSTGRES_USER: ${CHEMVAULT_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${CHEMVAULT_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${CHEMVAULT_POSTGRES_DB}
+    volumes:
+      - /data/chemvault_db::/var/lib/postgresql/data
+    ports:
+      - "54320:5432"
